@@ -1,21 +1,22 @@
-import { Injectable } from "@nestjs/common";
-import { ProductRepository } from "../../core/interfaces/product.repository";
-import { Product } from "../../core/entities/product.entity";
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Product, ProductDocument } from '../database/schemas/product.schema';
 
 @Injectable()
-export class ProductRepositoryImpl implements ProductRepository {
-  private products: Product[] = []; // Temporal, luego se conecta a DB
+export class ProductRepositoryImpl {
+  constructor(@InjectModel(Product.name) private productModel: Model<ProductDocument>) {}
 
   async findAll(): Promise<Product[]> {
-    return this.products;
+    return this.productModel.find().exec();
   }
 
   async findById(id: string): Promise<Product | null> {
-    return this.products.find((p) => p.id === id) || null;
+    return this.productModel.findById(id).exec();
   }
 
-  async create(product: Product): Promise<Product> {
-    this.products.push(product);
-    return product;
+  async create(productData: Partial<Product>): Promise<Product> {
+    const newProduct = new this.productModel(productData);
+    return newProduct.save();
   }
 }
