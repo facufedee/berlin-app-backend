@@ -1,4 +1,4 @@
-import { Controller, Post, Body, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Body, UseGuards, Request, Get } from '@nestjs/common';
 import { AuthService } from '../../application/services/auth.service';
 import { JwtAuthGuard } from '../../core/security/jwt.guard';
 
@@ -16,9 +16,9 @@ export class AuthController {
     return this.authService.login(email, password);
   }
 
-  @Post('me')
-  @UseGuards(JwtAuthGuard)
+  @Get('me')  // ✅ Cambiar de @Post a @Get si quieres que coincida con la solicitud de Postman
+  @UseGuards(JwtAuthGuard)  // ✅ Protegida con JWT
   async getProfile(@Request() req) {
-    return req.user;
+    return req.user;  // ✅ Devuelve el usuario autenticado
   }
 }
