@@ -9,19 +9,40 @@ export class Product {
   codigoRepuesto: string;
 
   @Prop({ required: true })
+  nombre: string;
+
+  @Prop({ required: true })
   marca: string;
 
   @Prop({ required: true })
-  tipoRepuesto: string;
+  tipoProducto: string;
 
   @Prop({ required: true })
   precio: number;
 
   @Prop()
-  repuestoAdicional?: string;
+  imagen?: string;
 
-  @Prop({ type: [String] })
-  aplicaciones: string[];
+  @Prop()
+  descripcion?: string;
+
+  @Prop({ type: String, default: null }) 
+  bombaDeAguaId?: string;
+
+  @Prop({ type: [{ marca: String, modelo: String, motor: String, combustible: String, año: String }] })
+  aplicaciones: { 
+    marca: string;
+    modelo: string;
+    motor: string;
+    combustible: string;
+    año: string;
+  }[];
+
+  @Prop({ type: [{ marca: String, codigo: String }] })
+  equivalencias: { 
+    marca: string;
+    codigo: string;
+  }[];
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);
