@@ -1,0 +1,8 @@
+Agregar una entidad "Moto", debes seguir estos mismos pasos:
+
+1️⃣ Crear el Schema en MongoDB (moto.schema.ts).
+2️⃣ Definir la Interfaz del Repositorio (moto.repository.ts).
+3️⃣ Implementar el Repositorio (MongoDB) (moto.repository.impl.ts).
+4️⃣ Crear el Controlador (moto.controller.ts).
+5️⃣ Crear el DTO (create-moto.dto.ts).
+6️⃣ Registrar el Módulo (MotoModule).

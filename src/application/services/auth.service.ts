@@ -16,6 +16,7 @@ export class AuthService {
   }
 
   async login(email: string, password: string) {
+    console.log("entro a login");
     const user = await this.userRepository.findByEmail(email);
     if (!user) return null;
 
