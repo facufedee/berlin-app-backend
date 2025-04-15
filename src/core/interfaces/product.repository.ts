@@ -1,7 +1,7 @@
-import { Product } from "../entities/product.entity";
+import { Producto } from "../entities/product.entity";
 
 export interface ProductRepository {
-  findAll(): Promise<Product[]>;
-  findById(id: string): Promise<Product | null>;
-  create(product: Product): Promise<Product>;
+  findAll(): Promise<Producto[]>;
+  findById(id: string): Promise<Producto | null>;
+  create(product: Producto): Promise<Producto>;
 }
