@@ -4,7 +4,7 @@ import { Producto } from '../../core/entities/product.entity';
 
 @Controller('productos')
 export class ProductoController {
-  constructor(private readonly productoService: ProductoService) {}
+  constructor(private readonly productoService: ProductoService) { }
 
   // Obtener todos los productos
   @Get()
@@ -13,22 +13,16 @@ export class ProductoController {
   }
 
   @Get('auto/:id')
-async buscarPorAuto(@Param('id') id: string) {
-  return this.productoService.buscarPorAutoId(id);
+  async buscarPorAuto(@Param('id') id: string) {
+    return this.productoService.buscarPorAutoId(id);
+  }
+
+  @Get(':tipoProducto/:codigo')
+async obtenerPorTipoYCodigo(
+  @Param('codigo') codigo: string
+) {
+  return this.productoService.obtenerPorCodigo(codigo);
 }
-
-
-  // Obtener producto por ID
-  @Get(':id')
-  async obtenerPorId(@Param('id') id: string): Promise<Producto> {
-    return this.productoService.obtenerPorId(id);
-  }
-
-  // Buscar productos por código de kit
-  @Get('codigo-kit/:codigoKit')
-  async obtenerPorCodigoKit(@Param('codigoKit') codigoKit: string): Promise<Producto[]> {
-    return this.productoService.obtenerPorCodigoKit(codigoKit);
-  }
 
   // Crear un nuevo producto
   @Post()

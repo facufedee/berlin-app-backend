@@ -13,6 +13,18 @@ export class AutoService {
     return this.autoRepository.buscarPorCodigoKit(codigo_kit);
   }
 
+  async buscarPorCodigoPastilla(codigo_pastilla: string) {
+    return this.autoRepository.buscarPorCodigoPastilla(codigo_pastilla);
+  }
+
+  async buscarPorCodigoHomo(codigo_homo: string) {
+    return this.autoRepository.buscarPorCodigoHomo(codigo_homo);
+  }
+
+  async buscarPorCodigoBomba(codigo_bomba: string){
+    return this.autoRepository.buscarPorCodigoBomba(codigo_bomba);
+  }
+
   async obtenerAutos() {
     return this.autoRepository.obtenerAutos();
   }

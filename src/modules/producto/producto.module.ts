@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProductoService } from '../../application/services/producto.service';
-import { ProductoController } from '../../infraestructure/controllers/producto.controller';
+import { ProductoController } from '../../infraestructure/controllers/productos.controller';
 import { Producto, ProductoSchema } from '../../core/entities/product.entity';
 import { ProductoRepository } from '../../infraestructure/repositories/product.repository';
 import { AutoModule } from '../auto/auto.module'; // 🔥 Importamos AutoModule

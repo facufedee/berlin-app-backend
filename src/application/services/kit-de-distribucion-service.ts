@@ -1,13 +1,28 @@
 import { Injectable } from '@nestjs/common';
 import { KitDeDistribucionRepository } from '../../infraestructure/repositories/kit-de-distribucion.repository';
+import { CrearKitDeDistribucionDto } from '../../core/dto/kit-de-distribucion.dto';
 
 @Injectable()
 export class KitDeDistribucionService {
-  constructor(
-    private readonly kitRepository: KitDeDistribucionRepository,
-  ) {}
+  constructor(private readonly repo: KitDeDistribucionRepository) {}
 
-  async obtenerPorCodigo(codigo_kit: string) {
-    return this.kitRepository.buscarPorCodigoKit(codigo_kit);
+  crear(data: CrearKitDeDistribucionDto) {
+    return this.repo.crear(data);
+  }
+
+  obtenerTodos() {
+    return this.repo.obtenerTodos();
+  }
+
+  obtenerPorId(id: string) {
+    return this.repo.obtenerPorId(id);
+  }
+
+  actualizar(id: string, data: Partial<CrearKitDeDistribucionDto>) {
+    return this.repo.actualizar(id, data);
+  }
+
+  eliminar(id: string) {
+    return this.repo.eliminar(id);
   }
 }

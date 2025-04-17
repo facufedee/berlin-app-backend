@@ -1,12 +1,33 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Delete } from '@nestjs/common';
 import { KitDeDistribucionService } from '../../application/services/kit-de-distribucion-service';
+import { CrearKitDeDistribucionDto } from '../../core/dto/kit-de-distribucion.dto';
 
-@Controller('kit-de-distribucion')
+@Controller('productos/kits')
 export class KitDeDistribucionController {
-  constructor(private readonly kitService: KitDeDistribucionService) {}
+  constructor(private readonly service: KitDeDistribucionService) {}
 
-  @Get(':codigo_kit')
-  async obtenerPorCodigo(@Param('codigo_kit') codigo_kit: string) {
-    return this.kitService.obtenerPorCodigo(codigo_kit);
+  @Post()
+  crear(@Body() dto: CrearKitDeDistribucionDto) {
+    return this.service.crear(dto);
+  }
+
+  @Get()
+  obtenerTodos() {
+    return this.service.obtenerTodos();
+  }
+
+  @Get(':id')
+  obtenerPorId(@Param('id') id: string) {
+    return this.service.obtenerPorId(id);
+  }
+
+  @Put(':id')
+  actualizar(@Param('id') id: string, @Body() dto: Partial<CrearKitDeDistribucionDto>) {
+    return this.service.actualizar(id, dto);
+  }
+
+  @Delete(':id')
+  eliminar(@Param('id') id: string) {
+    return this.service.eliminar(id);
   }
 }

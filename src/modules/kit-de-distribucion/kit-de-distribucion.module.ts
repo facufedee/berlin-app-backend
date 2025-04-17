@@ -12,7 +12,7 @@ import { KitDeDistribucion, KitDeDistribucionSchema } from '../../core/entities/
     ]),
   ],
   controllers: [KitDeDistribucionController],
-  providers: [KitDeDistribucionService, KitDeDistribucionRepository], // ✅ Registrar el repositorio
-  exports: [KitDeDistribucionService, KitDeDistribucionRepository], // ✅ Exportarlo para que otros módulos lo usen
+  providers: [KitDeDistribucionService, KitDeDistribucionRepository],
+  exports: [KitDeDistribucionService, KitDeDistribucionRepository],
 })
 export class KitDeDistribucionModule {}

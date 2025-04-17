@@ -1,16 +1,17 @@
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Injectable } from '@nestjs/common';
-import { KitDeDistribucion } from '../../core/entities/kit-de-distribucion.entity';
+import { BombaDeAgua } from '../../core/entities/bomba-de-agua.entity';
 
+// Este repositorio se encarga de acceder a la base de datos de bombas
 @Injectable()
-export class KitDeDistribucionRepository {
+export class BombaDeAguaRepository {
   constructor(
-    @InjectModel(KitDeDistribucion.name)
-    private readonly model: Model<KitDeDistribucion>,
+    @InjectModel(BombaDeAgua.name)
+    private readonly model: Model<BombaDeAgua>,
   ) {}
 
-  async crear(data: Partial<KitDeDistribucion>) {
+  async crear(data: Partial<BombaDeAgua>) {
     return this.model.create(data);
   }
 
@@ -22,7 +23,7 @@ export class KitDeDistribucionRepository {
     return this.model.findById(id);
   }
 
-  async actualizar(id: string, data: Partial<KitDeDistribucion>) {
+  async actualizar(id: string, data: Partial<BombaDeAgua>) {
     return this.model.findByIdAndUpdate(id, data, { new: true });
   }
 

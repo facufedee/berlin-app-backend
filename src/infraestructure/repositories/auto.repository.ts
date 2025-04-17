@@ -19,6 +19,20 @@ export class AutoRepository {
     return this.autoModel.find({ codigo_kit }).exec();
   }
 
+  async buscarPorCodigoHomo(  codigo_homo: string) {
+    return this.autoModel.find({ codigo_homo }).exec();
+  }
+
+  async buscarPorCodigoPastilla(  codigo_pastilla: string) {
+    return this.autoModel.find({ codigo_pastilla }).exec();
+  }
+
+  async buscarPorCodigoBomba(  codigo_bomba: string) {
+    return this.autoModel.find({ codigo_bomba }).exec();
+  }
+
+  
+
   async obtenerAutos() {
     return this.autoModel.find().exec();
   }
